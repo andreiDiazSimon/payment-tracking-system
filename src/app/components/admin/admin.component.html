@@ -1,20 +1,31 @@
 <div class="cursor-pointer text-blue-500" routerLink="/">Logout</div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-  <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition" (click)="navigateToAddStudent()">
+  <div
+    class="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition"
+    (click)="navigateToAddStudent()"
+  >
     <div class="text-center">
       <h3 class="text-xl font-semibold text-gray-800">Add Student</h3>
-      <p class="text-gray-600 mt-2">Click to add a new student to the system.</p>
+      <p class="text-gray-600 mt-2">
+        Click to add a new student to the system.
+      </p>
     </div>
   </div>
 
-  <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition" (click)="navigateToViewPaymentHistory()">
+  <div
+    class="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition"
+    (click)="navigateToViewPaymentHistory()"
+  >
     <div class="text-center">
       <h3 class="text-xl font-semibold text-gray-800">View Payment History</h3>
       <p class="text-gray-600 mt-2">Click to view student payment history.</p>
     </div>
   </div>
 
-  <div class="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition" (click)="navigateToMakeTransaction()">
+  <div
+    class="bg-white p-6 rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition"
+    (click)="navigateToMakeTransaction()"
+  >
     <div class="text-center">
       <h3 class="text-xl font-semibold text-gray-800">Make Transaction</h3>
       <p class="text-gray-600 mt-2">Click to make a payment transaction.</p>

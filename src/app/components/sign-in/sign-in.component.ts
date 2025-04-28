@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +14,11 @@ import { Router} from '@angular/router';
 export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
 
-  constructor(private route: Router, private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private route: Router,
+    private fb: FormBuilder,
+    private http: HttpClient,
+  ) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -29,17 +33,17 @@ export class SignInComponent implements OnInit {
     }
 
     const { username, password } = this.signInForm.value;
-    console.log(username, password)
-    this.http.post('http://localhost:3000/api/sign-in', { username, password })
+    console.log(username, password);
+    this.http
+      .post('http://localhost:3000/api/sign-in', { username, password })
       .subscribe({
-
-        next: response => {
+        next: (response) => {
           console.log('Sign-in successful', response);
-        this.route.navigate(['/admin']);
+          this.route.navigate(['/admin']);
         },
-        error: error => {
+        error: (error) => {
           console.error('Sign-in failed', error);
-        }
+        },
       });
   }
 

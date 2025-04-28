@@ -13,22 +13,22 @@ export const routes: Routes = [
   },
   {
     path: 'sign-in',
-    component: SignInComponent
+    component: SignInComponent,
   },
- {
+  {
     path: 'admin',
     component: AdminComponent,
   },
-      {
-        path: 'add-student',
-        component: AddStudentComponent,
-      },
-      {
-        path: 'view-payment-history',
-        component: ViewPaymentHistoryComponent,
-      },
-      {
-        path: 'make-transaction',
-       component: MakeTransactionComponent,
-      },
+  {
+    path: 'add-student',
+    component: AddStudentComponent,
+  },
+  {
+    path: 'view-payment-history',
+    component: ViewPaymentHistoryComponent,
+  },
+  {
+    path: 'make-transaction',
+    component: MakeTransactionComponent,
+  },
 ];
