@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,6 +19,7 @@ export class SignInComponent implements OnInit {
     private route: Router,
     private fb: FormBuilder,
     private http: HttpClient,
+private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -37,9 +39,19 @@ export class SignInComponent implements OnInit {
     this.http
       .post('http://localhost:3000/api/sign-in', { username, password })
       .subscribe({
-        next: (response) => {
+        next: (response: any) => {
           console.log('Sign-in successful', response);
-          this.route.navigate(['/admin']);
+          if (response.role === 'admin') {
+            this.route.navigate(['/admin']);
+          } else if (response.role === 'student') {
+            this.route.navigate(['/student']);
+            this.userService.setUsername(username);
+            this.userService.setStudentId(response.student.id);
+          }
+
+          if(response.message === "Invalid username or password"){
+            alert('invalid credentials')
+          }
         },
         error: (error) => {
           console.error('Sign-in failed', error);

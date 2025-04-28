@@ -4,6 +4,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { ViewPaymentHistoryComponent } from './components/view-payment-history/view-payment-history.component';
 import { MakeTransactionComponent } from './components/make-transaction/make-transaction.component';
+import { StudentComponent } from './components/student/student.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,10 @@ export const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent,
+  },
+  {
+    path: 'student',
+    component: StudentComponent,
   },
   {
     path: 'admin',

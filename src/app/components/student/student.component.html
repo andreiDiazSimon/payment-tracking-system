@@ -1,0 +1,18 @@
+<div routerLink="../">Logout</div>
+
+<div *ngIf="username">
+  <div class="text-[2.5rem] font-bold">Hello, {{ username }}!</div>
+</div>
+
+<!-- Display transactions if they exist -->
+<div *ngIf="transactions.length > 0; else noTransactions">
+  <div *ngFor="let transaction of transactions" class="bg-white p-4 rounded-lg shadow-md mb-4">
+    <div class="text-lg font-semibold">{{ transaction.title }}</div>
+    <div class="text-sm text-gray-500">Amount: ${{ transaction.amount }}</div>
+    <div class="text-sm text-gray-500">Date: {{ transaction.date | date }}</div>
+  </div>
+</div>
+
+<ng-template #noTransactions>
+  <p>No transactions found for this student.</p>
+</ng-template>

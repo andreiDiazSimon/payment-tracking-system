@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
@@ -15,7 +20,11 @@ export class MakeTransactionComponent implements OnInit {
   transactionForm!: FormGroup;
   selectedStudentId: number | null = null;
 
-  constructor(private router: Router, private http: HttpClient, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private fb: FormBuilder,
+  ) {}
 
   ngOnInit(): void {
     // Initialize the form for adding transaction
@@ -36,7 +45,7 @@ export class MakeTransactionComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching students:', error);
-      }
+      },
     );
   }
 
@@ -45,7 +54,7 @@ export class MakeTransactionComponent implements OnInit {
     this.selectedStudentId = studentId;
   }
 
- // This will handle the back button
+  // This will handle the back button
   goBack(): void {
     // Navigating back to the previous route
     this.router.navigate(['/admin']);
@@ -63,18 +72,18 @@ export class MakeTransactionComponent implements OnInit {
       amount,
     };
 
-
-
     // Send POST request to add the transaction
-    this.http.post('http://localhost:3000/api/add-transaction', transactionData).subscribe(
-      (response) => {
-        alert('Transaction added successfully!');
-        this.selectedStudentId = null; // Close the form after successful submission
-      },
-      (error) => {
-        console.error('Error adding transaction:', error);
-        alert('Failed to add transaction');
-      }
-    );
+    this.http
+      .post('http://localhost:3000/api/add-transaction', transactionData)
+      .subscribe(
+        (response) => {
+          alert('Transaction added successfully!');
+          this.selectedStudentId = null; // Close the form after successful submission
+        },
+        (error) => {
+          console.error('Error adding transaction:', error);
+          alert('Failed to add transaction');
+        },
+      );
   }
 }

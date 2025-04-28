@@ -19,19 +19,23 @@ export class ViewPaymentHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     // Fetch all students along with their transactions
-    this.http.get<any[]>('http://localhost:3000/api/with-transactions').subscribe({
-      next: (response) => {
-        this.students = response;
-      },
-      error: (err) => {
-        console.error('Error fetching students', err);
-      },
-    });
+    this.http
+      .get<any[]>('http://localhost:3000/api/with-transactions')
+      .subscribe({
+        next: (response) => {
+          this.students = response;
+        },
+        error: (err) => {
+          console.error('Error fetching students', err);
+        },
+      });
   }
 
   // This method is called when a student is clicked
   onStudentClick(studentId: number): void {
-    const selectedStudent = this.students.find((student) => student.id === studentId);
+    const selectedStudent = this.students.find(
+      (student) => student.id === studentId,
+    );
     if (selectedStudent) {
       this.selectedStudentId = studentId;
       this.transactions = selectedStudent.transactions; // Load the student's transactions
